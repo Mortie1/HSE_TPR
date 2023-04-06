@@ -1,1 +1,1 @@
-# HSE_TPR
+# HSE Teaching Practices repository
