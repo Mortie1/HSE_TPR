@@ -1,0 +1,61 @@
+header {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 66px;
+    height: 86px;
+}
+
+.header-navigation {
+    margin: auto;
+    width: 86%;
+    min-width: 790px;
+    max-width: 1640px;
+    padding-left: 55px;
+    padding-right: 55px;
+    height: 86px;
+}
+
+.header-logo {
+    width: 295px;
+    height: 80px;
+    float: left;
+}
+
+.header-navRight {
+    float: right;
+    padding-top: 30px;
+}
+
+.header-registration {
+    box-sizing: border-box;
+    width: 242px;
+    height: 41px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    color: white;
+    border-radius: 31px;
+    background: transparent;
+    cursor: pointer;
+    border: 3px solid #C1FF3E;
+}
+
+.header-enter {
+    box-sizing: border-box;
+    width: 156px;
+    height: 41px;
+    margin-left: 26px;
+    background: transparent;
+    border-radius: 31px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: white;
+    cursor: pointer;
+    border: 3px solid white;
+}
