@@ -101,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ENABLE_USER_ACTIVATION = False #TODO enable activation
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

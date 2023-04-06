@@ -1,0 +1,44 @@
+.container {
+    width: 86%;
+    min-width: 900px;
+    margin: 0 auto;
+    padding-top: 78px;
+    padding-bottom: 238px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_box {
+    width: 50%;
+    min-width: 500px;
+}
+
+.input-group {
+    margin-top: 25px;
+    width: 50%;
+    min-width: 250px;
+}
+
+#first_and_last_name_fields.input-group  {
+    margin-top: 50px;
+    width: 100%;
+    min-width: 500px;
+}
+
+/* #email_field.input-group  {
+    width: 25%;
+    min-width: 250px;
+}
+#password1_field.input-group  {
+    width: 25%;
+    min-width: 250px;
+} */
+
+#submit_btn.btn-primary {
+    margin-top: 50px;
+}
+
+.invalid-feedback {
+    font-size: 13px;
+}

@@ -1,0 +1,65 @@
+{% extends 'index_base.html' %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'registration/css/registration.css' %}"/>
+{% endblock styles%}
+
+{% block title %}
+Регистрация
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <form class="form_box" method="POST">
+            {% csrf_token %}
+            <div class="input-group" id="first_and_last_name_fields">
+                <span class="input-group-text">Имя и Фамилия</span>
+                {{ form.first_name }}
+                {{ form.last_name }}      
+            </div>
+            <div class="input-group" id="email_field">
+                <span class="input-group-text">Email</span>
+                {{ form.email }}
+                
+            </div>
+            <div class="input-group" id="password1_field">
+                <span class="input-group-text has-validation">Пароль</span>
+                {{ form.password1 }}
+                
+            </div>
+            <div class="input-group" id="password2_field">
+                <span class="input-group-text has-validation">Повторите пароль</span>
+                {{ form.password2 }}
+                
+            </div>
+            <button class="btn btn-primary" id="submit_btn">Зарегистрироваться</button>
+        </form>
+    </div>
+
+
+    {% if form.email.errors %}
+        <script>
+            document.getElementById("id_email").classList.add('is-invalid');
+            document.getElementById("email_field").innerHTML += '<div class="invalid-feedback">{{ form.email.errors }}</div>';
+        </script>
+    {% endif %}
+    {% if form.password2.errors %}
+        <script>
+            document.getElementById("id_password2").classList.add('is-invalid');
+            document.getElementById("password2_field").innerHTML += '<div class="invalid-feedback">{{ form.password2.errors }}</div>';
+        </script>
+    {% endif %}
+    {% if form.password1.errors %}
+        <script>
+            document.getElementById("id_password1").classList.add('is-invalid');
+            document.getElementById("password1_field").innerHTML += '<div class="invalid-feedback">{{ form.password1.errors }}</div>';
+        </script>
+    {% endif %}
+{% endblock content %}
+
+{% block scripts%}
+    <script src={% static 'registration/js/registration.js' %}/>
+    
+{% endblock scripts%}
