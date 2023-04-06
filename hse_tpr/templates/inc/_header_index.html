@@ -1,10 +1,10 @@
 {% load static %}
 <header>
     <div class="header-navigation">
-        <a href=""><img src="{% static 'imgs/logo.png' %}" class="header-logo"></a>
+        <a href={% url 'index' %}><img src="{% static 'imgs/logo.png' %}" class="header-logo"></a>
         <div class="header-navRight">
-            <button type="button" class="btn btn-primary">Зарегистрироваться</button>
-            <button type="button" class="btn btn-outline-primary" >Войти</button>
+            <button type="button" class="btn btn-primary" onclick="location.href = {% url 'registration' %}">Зарегистрироваться</button>
+            <button type="button" class="btn btn-outline-primary" onclick="location.href = {% url 'registration' %}">Войти</button>
         </div>
     </div>
 </header>
