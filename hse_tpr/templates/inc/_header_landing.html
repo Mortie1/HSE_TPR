@@ -1,0 +1,10 @@
+{% load static %}
+<header>
+    <div class="header-navigation">
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/white_logo.svg' %}" class="header-logo"></a>
+        <div class="header-navRight">
+            <a href="{% url 'registration' %}"><button class="header-registration">Зарегистрироваться</button></a>
+            <a href="{% url 'login' %}"><button class="header-enter">Войти</button></a>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,57 @@
+header {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 66px;
+}
+
+#__main {
+    min-width: 1110px;
+}
+
+body {
+    min-width: 1110px;
+}
+
+.header-navigation {
+    width: 86%;
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1640px;
+    padding-left: 55px;
+    padding-right: 55px;
+    height: 86px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header-logo {
+    width: 295px;
+    height: 80px;
+}
+
+.header-nav_href {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #C1FF3E;
+}
+
+.header-navRight {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.header-navRight a {
+    text-decoration: none;
+}
+
+.header-ava_profile {
+    width: 56px;
+    height: 56px;
+}
