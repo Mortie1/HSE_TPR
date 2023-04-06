@@ -17,19 +17,18 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(
         label=_('Email'),
         help_text=_('Required. Enter an existing email address.'),
-        widget=forms.EmailInput(attrs={'class':"password", 'placeholder': "Адрес Эл. почты"}),
+        widget=forms.EmailInput(attrs={'class':"form-control", 'placeholder': "Адрес Эл. почты"}),
         error_messages={'required': 'This is a custom error message for #862'}
     )
     password1 = forms.CharField(
         label=_("Password"),
         strip=False,
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"password", 'placeholder': "Пароль"}),
-        help_text=password_validation.password_validators_help_text_html(),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"form-control", 'placeholder': "••••••••"}),
         error_messages={'required': 'This is a custom error message for #862'},
     )
     password2 = forms.CharField(
         label=_("Password confirmation"),
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"password", 'placeholder': "Повторите Пароль"}),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"form-control", 'placeholder': "••••••••"}),
         strip=False,
         help_text=_("Enter the same password as before, for verification."),
     )
@@ -38,8 +37,8 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2')
         widgets = {
-            'first_name': forms.TextInput(attrs={'class':"password", 'placeholder': "Иван"}),
-            'last_name': forms.TextInput(attrs={'class':"password", 'placeholder': "Иванов"}),
+            'first_name': forms.TextInput(attrs={'class':"form-control", 'placeholder': "Иван"}),
+            'last_name': forms.TextInput(attrs={'class':"form-control", 'placeholder': "Иванов"}),
         }
         
 
@@ -51,6 +50,13 @@ class RegistrationForm(UserCreationForm):
             raise ValidationError('Этот адрес эл. почты уже зарегистрирован.')
 
         return email
+    
+    def __init__(self, *args, **kwargs):
+        # first call parent's constructor
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        # there's a `fields` property now
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
     
     
     
