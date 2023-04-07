@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration.apps.RegistrationConfig',
     
+    'registration.apps.RegistrationConfig',
+    'repository.apps.RepositoryConfig',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ENABLE_USER_ACTIVATION = False #TODO enable activation
+USE_REMEMBER_ME = False #TODO enable remember me
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

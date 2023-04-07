@@ -77,12 +77,13 @@ class RegistrationView(FormView):
 
             # messages.success(request, 'Вы успешно зарегистрировались!')
             
-        return redirect(reverse_lazy('index'))
+        return redirect(reverse_lazy('profile'))
     
     
     
 class LoginView(GuestOnlyView, FormView):
     template_name = 'registration/login.html'
+    form_class = LoginViaEmailForm
     
     
     @method_decorator(sensitive_post_parameters('password'))
@@ -109,10 +110,18 @@ class LoginView(GuestOnlyView, FormView):
 
         login(request, form.user_cache)
 
-        redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
-        url_is_safe = is_safe_url(redirect_to, allowed_hosts=request.get_host(), require_https=request.is_secure())
+        # redirect_to = request.POST.get(REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME))
+        # url_is_safe = is_safe_url(redirect_to, allowed_hosts=request.get_host(), require_https=request.is_secure())
 
-        if url_is_safe:
-            return redirect(redirect_to)
+        # if url_is_safe:
+        #     return redirect(redirect_to)
         
         return redirect('profile')
+    
+
+class LogoutView(LogoutView):
+    login_url = '/login'
+    
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        return redirect(reverse_lazy('index'))

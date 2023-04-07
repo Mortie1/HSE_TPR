@@ -61,7 +61,7 @@ class RegistrationForm(UserCreationForm):
     
     
 class LoginForm(UserCacheMixin, forms.Form):
-    password = forms.CharField(label=_('Password'), strip=False, widget=forms.PasswordInput(attrs={'class':"password", 'placeholder': "Пароль"}))
+    password = forms.CharField(label=_('Password'), strip=False, widget=forms.PasswordInput(attrs={'class':"form-control", 'placeholder': "Пароль"}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -81,7 +81,7 @@ class LoginForm(UserCacheMixin, forms.Form):
         return password
     
 class EmailForm(UserCacheMixin, forms.Form):
-    email = forms.EmailField(label=_('Email'), widget=forms.EmailInput(attrs={'class':"password", 'placeholder': "Адрес Эл. почты"}))
+    email = forms.EmailField(label=_('Email'), widget=forms.EmailInput(attrs={'class':"form-control", 'placeholder': "Адрес Эл. почты"}))
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -112,30 +112,30 @@ class ChangePasswordForm(SetPasswordForm):
         label=_("Old password"),
         strip=False,
         widget=forms.PasswordInput(
-            attrs={"autocomplete": "current-password", "autofocus": True, 'class':"password", 'placeholder': "Введите старый пароль"}
+            attrs={"autocomplete": "current-password", "autofocus": True, 'class':"form-control", 'placeholder': "Введите старый пароль"}
         ),
     )
     new_password1 = forms.CharField(
         label=_("New password"),
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"password", 'placeholder': "Новый пароль"}),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"form-control", 'placeholder': "Новый пароль"}),
         strip=False,
         help_text=password_validation.password_validators_help_text_html(),
     )
     new_password2 = forms.CharField(
         label=_("New password confirmation"),
         strip=False,
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"password", 'placeholder': "Повторите новый пароль"}),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", 'class':"form-control", 'placeholder': "Повторите новый пароль"}),
     )
     
 class ChangeNameForm(forms.Form):
     first_name = forms.CharField(
         max_length=30, 
         required=False,
-        widget = forms.TextInput(attrs={'class':"password", 'placeholder': "Введите ваше имя"}))
+        widget = forms.TextInput(attrs={'class':"form-control", 'placeholder': "Введите ваше имя"}))
     last_name = forms.CharField(
         max_length=150,
         required=False,
-        widget = forms.TextInput(attrs={'class':"password", 'placeholder': "Введите вашу фамилию"}))
+        widget = forms.TextInput(attrs={'class':"form-control", 'placeholder': "Введите вашу фамилию"}))
         
 
 class CustomSetPasswordForm(forms.Form):
