@@ -1,12 +1,9 @@
 {% load static %}
 <header>
     <div class="header-navigation">
-        <a href="{% url 'profile' %}"><img src="{% static 'imgs/logo.svg' %}" class="header-logo"></a>
+        <a href="{% url 'profile' %}"><img src="{% static 'imgs/logo.png' %}" class="header-logo"></a>
         <div class = "header-navRight">
-            <a class = "header-nav_href" href = "{% url 'add_statistic' %}">Статистики</a>
-            <a class = "header-nav_href" href = "{% url 'calendar' year=year1 month=month1 day=day1 %}">Календарь</a>
-            <a class = "header-nav_href" href = "{% url 'exercises' %}">Мои упражнения</a>
-            <a href = "{% url 'profile' %}"><img src = "{% static 'imgs/profile.svg' %}" class = "header-ava_profile"></a>
+            
         </div>
     </div>
 </header>
