@@ -1,0 +1,52 @@
+{% extends 'index_base.html' %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'registration/css/registration.css' %}"/>
+{% endblock styles%}
+
+{% block title %}
+Войти
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <form class="form_box" method="POST">
+            {% csrf_token %}
+            
+            <div class="input-group" id="email_field">
+                <span class="input-group-text">Email</span>
+                {{ form.email }}
+                
+            </div>
+            <div class="input-group" id="password_field">
+                <span class="input-group-text">Пароль</span>
+                {{ form.password }}
+                
+            </div>          
+            <button class="btn btn-primary" id="submit_btn">Войти</button>
+        </form>
+    </div>
+
+
+    {% if form.email.errors %}
+        {{form.email.errors}}
+        <script>
+            document.getElementById("id_email").classList.add('is-invalid');
+            document.getElementById("email_field").innerHTML += '<div class="invalid-feedback">{{ form.email.errors }}</div>';
+        </script>
+    {% endif %}
+
+    {% if form.password.errors %}
+        <script>
+            document.getElementById("id_password").classList.add('is-invalid');
+            document.getElementById("password_field").innerHTML += '<div class="invalid-feedback">{{ form.password.errors }}</div>';
+        </script>
+    {% endif %}
+{% endblock content %}
+
+{% block scripts%}
+    <script src={% static 'registration/js/registration.js' %}/>
+    
+{% endblock scripts%}
