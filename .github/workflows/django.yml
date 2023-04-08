@@ -36,4 +36,4 @@ jobs:
       uses: hardcoretech/django-migration-checker-action@v1
       with:
         # app folder path
-        app-path: ./hse_tpr/registration# default is app
+        app-path: ./hse_tpr/registration
