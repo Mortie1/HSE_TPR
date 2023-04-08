@@ -26,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Make and apply migrations
-      working-directory: ./hse-tpr
+      working-directory: hse-tpr
       run: |
         python manage.py makemigrations
         python manage.py migrate
