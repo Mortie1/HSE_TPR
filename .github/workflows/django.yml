@@ -25,11 +25,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-#     - name: Make and apply migrations
-#       run: |
-      
-    - name: Django Security Check
+    - name: Make and apply migrations
       working-directory: ./hse-tpr
+      run: |
+        python manage.py makemigrations
+        python manage.py migrate
+       
+    - working-directory: ./hse-tpr
+    - name: Django Security Check
       # You may pin to the exact commit or the version.
       # uses: victoriadrake/django-security-check@762dd0ab80194dbded70117daa32bd7d139c6a04
       uses: victoriadrake/django-security-check@v1.1.0
