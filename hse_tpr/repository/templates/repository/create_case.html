@@ -1,0 +1,35 @@
+{% extends 'user_base.html' %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/create_case.css' %}"/>
+{% endblock styles%}
+
+{% block title %}
+Создать кейс
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <form class="form_box" method="POST">
+            {% csrf_token %}
+            
+            <div class="input-group" id="email_field">
+                <span class="input-group-text">Название кейса</span>
+                {{ form.title }}
+                
+            </div>
+            {{ form.description }}
+            {{ form.case_types }}
+                      
+            <button class="btn btn-primary" id="submit_btn">Создать</button>
+        </form>
+    </div>
+
+
+{% endblock content %}
+
+{% block scripts%}
+    
+{% endblock scripts%}

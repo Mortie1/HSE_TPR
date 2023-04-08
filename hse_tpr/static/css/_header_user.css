@@ -43,10 +43,13 @@ body {
 }
 
 .header-navRight {
+    float: right;
+    padding-top: 30px;
     display: flex;
-    align-items: center;
-    gap: 50px;
+    justify-content: space-between;
+    width: 300px;
 }
+
 
 .header-navRight a {
     text-decoration: none;
@@ -55,4 +58,23 @@ body {
 .header-ava_profile {
     width: 56px;
     height: 56px;
+}
+
+.nav-link {
+    --nav-link-hover-bg: #244e96;
+    --nav-link-active: #1B3B72;
+    --nav-link-hover-border-color: #1B3B72;
+    --nav-link-border-color: #1B3B72;
+    font-family: 'Montserrat';
+    --nav-link-hover-color: var(--bs-white);
+    --nav-link-color: white;
+    --nav-link-bg: #1B3B72;
+}
+.nav-link {
+    color: #1B3B72;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: #1B3B72;
 }

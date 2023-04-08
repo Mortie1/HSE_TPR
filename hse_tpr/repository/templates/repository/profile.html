@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'repository/css/profile.css' %}">
 {% endblock styles%}
 
+
 {% block title %}
 Профиль
 {% endblock title %}
@@ -15,3 +16,7 @@
         <button onclick="location.href={% url 'logout' %}">Выйти</button>
     </div>
 {% endblock content %}
+
+{% block scripts%}
+<script>document.getElementById("header_profile_link").classList.add("active");</script>
+{% endblock scripts%}

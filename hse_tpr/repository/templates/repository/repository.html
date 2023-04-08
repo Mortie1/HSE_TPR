@@ -1,0 +1,25 @@
+{% extends 'user_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/repository.css' %}">
+{% endblock styles%}
+
+
+{% block title %}
+Репозиторий
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        Здесь будет Репозиторий
+        <button class="btn btn-primary" id="create_case_button" onclick="location.href='./create_case'">Создать кейс</button>
+    </div>
+{% endblock content %}
+
+{% block scripts%}
+<script>
+    document.getElementById("header_repo_link").classList.add("active");
+    document.getElementById("header_repo_link").styles.background_color = "#1B3B72";
+</script>
+{% endblock scripts%}
