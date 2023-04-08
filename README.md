@@ -1,4 +1,4 @@
-# HSE Teaching Practices repository
+# HSE Teaching Practices Repository
 
 ### Installation guide
 
