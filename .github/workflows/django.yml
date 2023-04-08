@@ -30,9 +30,10 @@ jobs:
       run: |
         python manage.py makemigrations
         python manage.py migrate
-       
-    - working-directory: ./hse-tpr
-    - name: Django Security Check
+    - name: Django Migration Checker
       # You may pin to the exact commit or the version.
-      # uses: victoriadrake/django-security-check@762dd0ab80194dbded70117daa32bd7d139c6a04
-      uses: victoriadrake/django-security-check@v1.1.0
+      # uses: hardcoretech/django-migration-checker-action@8980b8013dc1722a27c0c852e8dd94c1601d3f5d
+      uses: hardcoretech/django-migration-checker-action@v1
+      with:
+        # app folder path
+        app-path: ./hse-tpr/registration# default is app
