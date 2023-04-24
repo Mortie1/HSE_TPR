@@ -5,5 +5,7 @@ from .views import *
 urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('repository/', RepositoryView.as_view(), name='repository'),
-    path('repository/create_case/', CreateCaseView.as_view(), name='create_case')
+    path('repository/create_case/', CreateCaseView.as_view(), name='create_case'),
+    path('repository/<int:case_pk>/', CaseView.as_view(), name='case'),
+
 ]

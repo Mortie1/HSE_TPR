@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'registration.apps.RegistrationConfig',
     'repository.apps.RepositoryConfig',
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [

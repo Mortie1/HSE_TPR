@@ -12,14 +12,20 @@
 
 {% block content %}
     <div class="container">
-        Здесь будет Репозиторий
         <button class="btn btn-primary" id="create_case_button" onclick="location.href='./create_case'">Создать кейс</button>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" id='tiles'><img id='tiles' src={% static 'imgs/4sq.png' %} class='squares'></button>
+            <button type="button" class="btn btn-outline-primary" id='list'><img id='list' src={% static 'imgs/list.png' %} class='list'></button>
+        </div>
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name="q" id="q" autocomplete = "off">
+        <div id="flex"></div>
     </div>
 {% endblock content %}
 
 {% block scripts%}
 <script>
     document.getElementById("header_repo_link").classList.add("active");
-    document.getElementById("header_repo_link").styles.background_color = "#1B3B72";
+    document.getElementById("header_repo_link").style.background_color = "#1B3B72";
 </script>
+<script src="{% static 'repository/js/repository.js' %}?cachebust=202304101530"> </script>
 {% endblock scripts%}

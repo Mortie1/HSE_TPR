@@ -1,6 +1,6 @@
 {% extends 'user_base.html' %}
 {% load static %}
-
+{% load repository_templatetags %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'repository/css/create_case.css' %}"/>
@@ -14,16 +14,21 @@
     <div class="container">
         <form class="form_box" method="POST">
             {% csrf_token %}
-            
-            <div class="input-group" id="email_field">
-                <span class="input-group-text">Название кейса</span>
-                {{ form.title }}
-                
+            {% for field in form %}
+                <p class="field-label">{{ field.label }}</p>
+                {{ field }}
+                {% if field.errors %}
+                    <script type="text/javascript">
+                        document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
+                    </script>
+                {% endif %}
+                {% if field.label|is_multiple_choice %}
+                    <p class="hint">Выберите один или несколько вариантов. Для удаления выбранного варианта нажмите по нему с зажатой клавишей ctrl.</p>
+                {% endif %}
+            {% endfor %}
+            <div class = "input-box">
+                <button class="btn btn-primary" id="submit_btn">Создать</button>
             </div>
-            {{ form.description }}
-            {{ form.case_types }}
-                      
-            <button class="btn btn-primary" id="submit_btn">Создать</button>
         </form>
     </div>
 
@@ -31,5 +36,7 @@
 {% endblock content %}
 
 {% block scripts%}
+<script src={% static 'repository/js/create_case.js'%}>
     
+</script>
 {% endblock scripts%}

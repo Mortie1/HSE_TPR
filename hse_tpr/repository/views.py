@@ -23,6 +23,7 @@ class ProfileView(TemplateView, LoginRequiredMixin):
 class RepositoryView(TemplateView, LoginRequiredMixin):
     login_url = '/login'
     template_name = 'repository/repository.html'
+    
 
 
 class CreateCaseView(FormView, LoginRequiredMixin):
@@ -31,12 +32,43 @@ class CreateCaseView(FormView, LoginRequiredMixin):
     template_name = 'repository/create_case.html'
     
     def form_valid(self, form) -> HttpResponse:
+        user = self.request.user
         case = EducationalCase()
-        case.title = form.clean_title()
-        case.description = form.clean_description()
-        case.owner_id = self.request.user.pk
-        case.save()
-        for case_type in form.clean_case_types():
-            case.case_types.add(case_type)
+        case = form.save(commit=False)
+        case.owner_id = user.pk
         case.save()
         return HttpResponseRedirect(reverse_lazy('repository'))
+
+
+class CaseView(FormView, LoginRequiredMixin):
+    login_url = '/login'
+    template_name = 'repository/case.html'
+    form_class = EducationalCaseForm
+    
+    def get_initial(self):
+        initial = super().get_initial()
+        case = get_object_or_404(EducationalCase, pk=self.kwargs['case_pk'])
+        many_to_many_fields = {
+            'case_types',
+            'educational_levels',
+            'state_specs',
+            'other_specs',
+        }
+        fields = EducationalCase._meta.get_fields()
+        for field in fields:
+            if field.name in many_to_many_fields:
+                initial[field.name] = getattr(case, field.name).all()
+                print(field.name, getattr(case, field.name).all())
+            else:
+                initial[field.name] = getattr(case, field.name)
+        return initial
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        case = get_object_or_404(EducationalCase, pk=self.kwargs['case_pk'])
+        if not case.is_published:
+            raise Http404
+        if case.is_deleted:
+            raise Http404
+        context['case'] = case
+        return context
