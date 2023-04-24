@@ -9,3 +9,55 @@
 .btn {
     float: right;
 }
+
+.btn-primary {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#list {
+    margin-right: 5px;
+}
+
+#q {
+    float: right;
+    width: 250px;
+}
+
+.squares {
+    width: 23px;
+    height: 23px;
+}
+.list {
+    height: 23px;
+}
+
+
+.empty {
+    margin-top: 100px;
+    color: #8b8b8b;
+}
+#flex {
+    margin-top: 50px;
+}
+
+#flex ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#flex ul li {
+    margin-top: 20px;
+    list-style: none;
+    flex: 0 0 33.3333333%;
+}
+
+.card-title {
+    font-weight: bold;
+}
+.card-text {
+    font-weight: lighter;
+}
+.btn-group {
+    float: right;
+}

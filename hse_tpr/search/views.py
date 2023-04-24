@@ -23,6 +23,30 @@ class SearchCasesAjax(LoginRequiredMixin, TemplateView):
         return JsonResponse({'html': html})
 
 
+class SearchUserCasesTilesAjax(SearchCasesAjax):
+    def __init__(self, **kwargs):
+        super().__init__("search/search_cases_tiles.html", **kwargs)
+        
+    def get(self, *args, **kwargs):
+        cases = EducationalCase.objects.filter(
+            is_deleted=0, case_title__icontains=self.request.GET.get('q'), owner_id=self.request.user.pk).distinct()
+        html = render_to_string(
+            self.search_template, {'cases': cases})
+        return JsonResponse({'html': html})
+
+
+class SearchUserCasesListAjax(SearchCasesAjax):
+    def __init__(self, **kwargs):
+        super().__init__("search/search_cases_list.html", **kwargs)
+        
+    def get(self, *args, **kwargs):
+        cases = EducationalCase.objects.filter(
+            is_deleted=0, case_title__icontains=self.request.GET.get('q'), owner_id=self.request.user.pk).distinct()
+        html = render_to_string(
+            self.search_template, {'cases': cases})
+        return JsonResponse({'html': html})
+
+
 class SearchCasesTilesAjax(SearchCasesAjax):
     def __init__(self, **kwargs):
         super().__init__("search/search_cases_tiles.html", **kwargs)

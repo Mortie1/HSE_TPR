@@ -16,11 +16,6 @@
             <td>{% if case.case_department %}{{ case.case_department }}{% endif %}</td>
             <td>{% cut_description case.case_annotation %}</td>
         </tr>
-    </tbody>
-</table>
-    {% empty %}
-    </tbody>
-</table>
-    <div class="empty">Не найдено ни одного кейса :(</div>
     {% endfor %}
-    
+    </tbody>
+</table>
