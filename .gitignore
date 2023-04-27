@@ -133,3 +133,5 @@ dmypy.json
 # migrations
 migrations/
 
+# secret keys
+.env
