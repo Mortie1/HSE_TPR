@@ -77,7 +77,7 @@ class RegistrationView(FormView):
 
             # messages.success(request, 'Вы успешно зарегистрировались!')
             
-        return redirect(reverse_lazy('profile'))
+        return redirect(reverse_lazy('repository'))
     
     
     

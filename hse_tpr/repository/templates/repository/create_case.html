@@ -22,8 +22,8 @@
                         document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
                     </script>
                 {% endif %}
-                {% if field.label|is_multiple_choice %}
-                    <p class="hint">Выберите один или несколько вариантов. Для удаления выбранного варианта нажмите по нему с зажатой клавишей ctrl.</p>
+                {% if field|is_multiple_choice %}
+                    <p class="hint">Для выбора нескольких вариантов, нажмите по ним с зажатой клавишей ctrl. Для удаления выбранного варианта, нажмите по нему с зажатой клавишей ctrl.</p>
                 {% endif %}
             {% endfor %}
             <div class = "input-box">

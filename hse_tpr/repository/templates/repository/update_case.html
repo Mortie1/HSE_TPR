@@ -1,0 +1,33 @@
+{% extends 'user_base.html' %}
+{% load static %}
+{% load repository_templatetags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/update_case.css' %}">
+{% endblock styles%}
+
+
+{% block title %}
+    {{ case.case_title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        {% for field in form %}
+            <p class="field-label">{{ field.label }}</p>
+            {{ field }}
+            {% if field.errors %}
+                <script type="text/javascript">
+                    document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
+                </script>
+            {% endif %}
+            {% if field|is_multiple_choice %}
+                <p class="hint">Выберите один или несколько вариантов. Для удаления выбранного варианта нажмите по нему с зажатой клавишей ctrl.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block scripts%}
+<script src="{% static 'repository/js/update_case.js'%}"></script>
+{% endblock scripts%}

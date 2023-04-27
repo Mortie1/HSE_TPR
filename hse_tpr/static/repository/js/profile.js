@@ -2,7 +2,7 @@ let input = document.querySelector('input[name="q"]');
     
 let answerField = document.getElementById("flex");
 
-let t = 'cases_tiles';
+let t = 'cases_list';
 
 async function loadDoc() {
     try {
@@ -11,6 +11,10 @@ async function loadDoc() {
         const data = await response.json();
         let list = data.html;
         answerField.innerHTML= list;
+        let hrefs = answerField.getElementsByTagName("a");
+        for (var i = 0; i < hrefs.length; ++i) {
+            hrefs[i].href = "../repository/case_update/" + hrefs[i].dataset.casePk + '/';
+        }
     } else {
         console.error('Ошибка загрузки данных!');
     }

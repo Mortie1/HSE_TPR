@@ -11,7 +11,7 @@
     <tbody>
     {% for case in cases %}
         <tr>
-            <td><a href="{{ case.pk }}/">{{ case.case_title }}</a></td>
+            <td><a href="{{ case.pk }}/" data-case-pk={{ case.pk }}>{{ case.case_title }}</a></td>
             <td>{% if case.case_platform%}{{ case.case_platform }}{% endif %}</td>
             <td>{% if case.case_department %}{{ case.case_department }}{% endif %}</td>
             <td>{% cut_description case.case_annotation %}</td>

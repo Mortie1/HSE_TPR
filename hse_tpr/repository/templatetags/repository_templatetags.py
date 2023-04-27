@@ -9,14 +9,11 @@ register = template.Library()
 def is_multiple_choice(field): 
     select_fields = {
         "case_types",
-        "case_platform",
-        "case_department",
-        "information_author_department",
         "state_specs",
         "other_specs",
         "educational_levels"
     }
-    if field.title in select_fields:
+    if field.name in select_fields:
         return True
     return False
 

@@ -10,7 +10,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}" id="header_profile_link">Профиль</a>
                 </li>
+                <li class="nav-item">
+                    <div class="select-menu ">
+                        <div class="select-btn">
+                          <a class="nav-link">Меню</a>
+                        </div>
+                      
+                        <ul class="options">
+                          <li class="option">
+                            <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
+                            <a href={% url 'create_case' %} class="option-text">Создать кейс</a>
+                          </li>
+                          <li class="option">
+                            <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
+                            <a href={% url 'settings' %} class="option-text">Настройки</a>
+                          </li>
+                          <li class="option">
+                            <i class="bx bxl-facebook-circle" style="color: #4267B2;"></i>
+                            <a href={% url 'logout' %} class="option-text">Выйти</a>
+                          </li>
+                        </ul>
+                      </div>
+                </li>
             </ul>
         </div>
     </div>
 </header>
+<script src={% static 'js/_header_user.js'%}></script>

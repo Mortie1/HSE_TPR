@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
 .container {
     width: 86%;
     min-width: 900px;
@@ -10,13 +16,30 @@
     float: right;
 }
 
+.btn-outline-primary {
+    border-color: #000;
+}
+
 .btn-primary {
     margin-left: 5px;
     margin-right: 5px;
+    background: #0050CF;
+}
+
+.settings-icon {
+    width: 23px;
+    height: 23px;
+    margin-top: 7px;
+    margin-right: 10px;
+    float: right;
 }
 
 #list {
     margin-right: 5px;
+}
+
+.header {
+    font-weight: bold;
 }
 
 #q {

@@ -1,0 +1,44 @@
+{% extends 'user_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/settings.css' %}">
+{% endblock styles%}
+
+
+{% block title %}
+Настройки
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">Настройки:</div>
+        <div class="input-group">
+            <span class="input-group-text">Email</span>
+            <input type="text" aria-label="email" class="form-control" value="{{ user.email }}" disabled>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group" id="first_name_and_last_name">
+                <span class="input-group-text">Имя и фамилия</span>
+                <input type="text" class="form-control" value="{{ user.first_name }}" id="first_name_field" disabled>
+                <input type="text" class="form-control" value="{{ user.last_name }}" id="last_name_field" disabled>
+                <button type="button" class="btn btn-primary" id="names_button" value="0">Изменить</button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group" id="password">
+                <span class="input-group-text">Пароль:</span>
+                <input type="password" class="form-control" placeholder="••••••••" id="first_password_field" disabled>
+                <input type="password" class="form-control" placeholder="••••••••" id="second_password_field" disabled style="display: none;">
+                <button type="button" class="btn btn-primary" id="passwords_button" value="0">Изменить</button>
+            </div>
+            <div class="password_errors"></div>
+        </form>
+    </div>
+{% endblock content %}
+
+{% block scripts%}
+<script src={% static 'repository/js/settings.js'%}></script>
+{% endblock scripts%}

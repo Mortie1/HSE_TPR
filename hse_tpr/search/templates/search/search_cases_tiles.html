@@ -11,7 +11,7 @@
                 {% comment %} <li class="list-group-item">{{ case.author }}</li> {% endcomment %}
             </ul>
             <div class="card-body">
-                <a href="{{ case.pk }}/" class="card-link">Подробнее</a>
+                <a href="{{ case.pk }}/" class="card-link" data-case-pk={{ case.pk }}>Подробнее</a>
             </div>
         </div>
     </li>

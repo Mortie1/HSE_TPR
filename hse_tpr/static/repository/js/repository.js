@@ -2,7 +2,7 @@ let input = document.querySelector('input[name="q"]');
     
 let answerField = document.getElementById("flex");
 
-let t = 'cases_tiles';
+let t = 'cases_list';
 
 async function loadDoc() {
     try {
