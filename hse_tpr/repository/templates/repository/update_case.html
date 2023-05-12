@@ -13,19 +13,27 @@
 
 {% block content %}
     <div class="container">
-        {% for field in form %}
-            <p class="field-label">{{ field.label }}</p>
-            {{ field }}
-            {% if field.errors %}
-                <script type="text/javascript">
-                    document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
-                </script>
-            {% endif %}
-            {% if field|is_multiple_choice %}
-                <p class="hint">Выберите один или несколько вариантов. Для удаления выбранного варианта нажмите по нему с зажатой клавишей ctrl.</p>
-            {% endif %}
-        {% endfor %}
+        <form class="form_box" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <p class="field-label">{{ field.label }}</p>
+                {{ field }}
+                {% if field.errors %}
+                    <script type="text/javascript">
+                        document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
+                    </script>
+                {% endif %}
+                {% if field|is_multiple_choice %}
+                    <p class="hint">Выберите один или несколько вариантов. Для удаления выбранного варианта нажмите по нему с зажатой клавишей ctrl.</p>
+                {% endif %}
+            {% endfor %}
+
+            <div class = "input-box">
+                <button class="btn btn-primary" id="submit_btn">Обновить</button>
+            </div>
+        </form>
     </div>
+    
 {% endblock content %}
 
 {% block scripts%}

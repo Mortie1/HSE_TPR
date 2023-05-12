@@ -1,39 +1,46 @@
+from typing import Any, Dict
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import FormView, TemplateView, View
-from django.views.decorators.http import require_http_methods
-from django.urls import reverse_lazy
-from django.http import Http404, HttpResponseRedirect, JsonResponse, HttpResponse, HttpResponseForbidden
-from django.core.exceptions import ValidationError
-from django.contrib.auth.password_validation import validate_password, password_validators_help_text_html
-from  django.contrib.auth.hashers import make_password
-from calendar import monthrange
+from django.contrib.auth.models import User
 
-from datetime import date
+from django.urls import reverse_lazy
+from django.http import Http404, HttpResponseRedirect, JsonResponse, HttpResponse
+from django.core.exceptions import ValidationError
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import make_password
+
 
 import json
 
 from django.views.generic import TemplateView, CreateView, UpdateView
 from .forms import EducationalCaseForm
-from .models import EducationalCase, CaseType
+from .models import EducationalCase, CaseType, Platform
+
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = '/login/'
     template_name = 'repository/profile.html'
-    
+
 
 class RepositoryView(LoginRequiredMixin, TemplateView):
     login_url = '/login/'
     template_name = 'repository/repository.html'
     
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['models_for_filters'] = {
+            'Platform': Platform,
+        }
+        return context
 
 
 class CreateCaseView(LoginRequiredMixin, FormView):
     login_url = '/login/'
     form_class = EducationalCaseForm
     template_name = 'repository/create_case.html'
-    
-    def form_valid(self, form) -> HttpResponse:
+
+    def form_valid(self, form: EducationalCaseForm) -> HttpResponse:
         user = self.request.user
         case = EducationalCase()
         case = form.save(commit=False)
@@ -57,7 +64,7 @@ class CaseView(LoginRequiredMixin, FormView):
     login_url = '/login/'
     template_name = 'repository/case.html'
     form_class = EducationalCaseForm
-    
+
     def get_initial(self):
         initial = super().get_initial()
         case = get_object_or_404(EducationalCase, pk=self.kwargs['case_pk'])
@@ -85,10 +92,11 @@ class CaseView(LoginRequiredMixin, FormView):
         context['case'] = case
         return context
 
+
 class SettingsView(LoginRequiredMixin, TemplateView):
     login_url = '/login/'
     template_name = 'repository/settings.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
@@ -101,11 +109,11 @@ class CaseUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'repository/update_case.html'
     form_class = EducationalCaseForm
     model = EducationalCase
-    
+
     def get_initial(self):
         initial = super().get_initial()
         case = get_object_or_404(EducationalCase, pk=self.kwargs['pk'])
-        if case.owner_id != self.request.user.pk or case.is_deleted:
+        if case.owner != self.request.user or case.is_deleted:
             raise Http404
         many_to_many_fields = {
             'case_types',
@@ -137,14 +145,15 @@ class CaseUpdateView(LoginRequiredMixin, UpdateView):
         context['case'] = case
         return context
 
+
 class SettingsSaveName(LoginRequiredMixin, View):
     login_url = '/login/'
-    
+
     def post(self, request, *args, **kwargs):
         coming_data = json.loads(request.body)
         response = {}
         try:
-            user = self.request.user
+            user: User = self.request.user  # type: ignore
             user.first_name = coming_data['first_name']
             user.last_name = coming_data['last_name']
             user.save()
@@ -153,19 +162,20 @@ class SettingsSaveName(LoginRequiredMixin, View):
             response = {"OK": 0}
         return JsonResponse(response)
 
+
 class SettingsSavePassword(LoginRequiredMixin, View):
     login_url = '/login/'
-    
+
     def post(self, request, *args, **kwargs):
         coming_data = json.loads(request.body)
         response = {}
         try:
-            user = self.request.user
+            user: User = self.request.user # type: ignore
             if coming_data['first_password'] != coming_data['second_password']:
-                 raise ValidationError(
-                ("Пароли не совпадают"),
-                code="passwords_dont_match",
-            )
+                raise ValidationError(
+                    ("Пароли не совпадают"),
+                    code="passwords_dont_match",
+                )
             validate_password(coming_data['first_password'], user=user, )
             user.password = make_password(coming_data['first_password'])
             user.save()

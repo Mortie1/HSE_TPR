@@ -6,7 +6,7 @@ let t = 'cases_list';
 
 async function loadDoc() {
     try {
-    const response = await fetch(`/search_user/${t}?q=${input.value}`);
+    const response = await fetch(`/search/${t}?q=${input.value}&profile=1`);
     if (response.status == 200) {
         const data = await response.json();
         let list = data.html;

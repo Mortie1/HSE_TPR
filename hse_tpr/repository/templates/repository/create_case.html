@@ -17,6 +17,9 @@
             {% for field in form %}
                 <p class="field-label">{{ field.label }}</p>
                 {{ field }}
+                <script type="text/javascript">
+                    document.getElementById("{{ field.auto_id }}").classList.remove('is-invalid');
+                </script>
                 {% if field.errors %}
                     <script type="text/javascript">
                         document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');

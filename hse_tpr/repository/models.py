@@ -61,7 +61,16 @@ class EducationalCase(models.Model):
     case_annotation = models.TextField(blank=True)
     case_platform = models.ForeignKey(Platform, on_delete=models.SET_NULL, null=True, blank=True)
     case_department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, related_name="case_department", blank=True)
-    case_comments = models.TextField(blank=True)
+    case_usage = models.TextField(blank=True)
+    case_ed_results = models.TextField(blank=True)
+    case_prototypes = models.TextField(blank=True)
+    case_info_url = models.URLField(blank=True)
+    case_methods = models.TextField(blank=True)
+    case_technical_requirements = models.TextField(blank=True)
+    case_needed_conditions = models.TextField(blank=True)
+    case_licenses_costs = models.TextField(blank=True)
+    case_free_version_limits = models.TextField(blank=True)
+    
     
     # Information author
     information_author_email = models.EmailField(max_length=250, blank=True)
@@ -83,9 +92,9 @@ class EducationalCase(models.Model):
     # Case usage recommendations
     problems = models.TextField(blank=True)
     what_could_be_improved = models.TextField(blank=True)
-    would_you_recommend_in_HSE = models.TextField(blank=True)
-    would_you_recommend_in_other_orgs = models.TextField(blank=True)
-    paid_unpaid_recommendation = models.TextField(blank=True)
+    would_you_recommend_in_HSE = models.BooleanField(default=None)
+    would_you_recommend_in_other_orgs = models.BooleanField(default=None)
+    paid_unpaid_recommendation = models.BooleanField(default=None)
     case_spreading_recommendations = models.TextField(blank=True)
     
     
@@ -98,6 +107,7 @@ class EducationalCase(models.Model):
     other_specs = models.ManyToManyField(OtherSpec, blank=True)
     educational_specialties = models.TextField(blank=True)
     educational_levels = models.ManyToManyField(EducationalLevel, blank=True)
+    other_information = models.TextField(blank=True)
     
     #TODO: tags for easy search
 

@@ -17,7 +17,13 @@ def is_multiple_choice(field):
         return True
     return False
 
+@register.filter
+def at(d: dict, val: str):
+    return d[val]
 
+@register.filter
+def index(l: list, val: int):
+    return l[val]
 
 @register.simple_tag
 def edit_if_select(field, case):
@@ -46,3 +52,18 @@ def edit_if_select(field, case):
     field.choices = choices
     print(field.choices)
     return field
+
+@register.simple_tag
+def get_options(model, is_single=False):
+    objs = model.objects.all()
+    res = []
+    for obj in objs:
+        res.append((obj.pk, obj.title))
+    res.sort(key=lambda x: x[1])
+    x = []
+    if is_single:
+        x = [(None, "Не выбрано")]
+    x.extend(res)
+    print(x)
+    return x
+

@@ -41,7 +41,7 @@ class RegistrationView(FormView):
     form_class = RegistrationForm
         
     
-    def form_valid(self, form):
+    def form_valid(self, form: RegistrationForm):
         request = self.request
         user = form.save(commit=False)
         user.save()
@@ -95,7 +95,7 @@ class LoginView(GuestOnlyView, FormView):
 
         return super().dispatch(request, *args, **kwargs)
     
-    def form_valid(self, form):
+    def form_valid(self, form: LoginViaEmailForm):
         request = self.request
 
         # If the test cookie worked, go ahead and delete it since its no longer needed
