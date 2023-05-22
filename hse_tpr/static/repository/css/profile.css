@@ -1,7 +1,172 @@
-.container {
-    width: 86%;
+/* .container {
+    width: 75%;
     min-width: 900px;
     margin: 0 auto;
     padding-top: 78px;
     padding-bottom: 238px;
+}
+
+.btn {
+    float: right;
+}
+
+.btn-outline-primary {
+    border-color: #000;
+}
+
+.btn-primary {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #0050CF;
+}
+
+.settings-icon {
+    width: 23px;
+    height: 23px;
+    margin-top: 7px;
+    margin-right: 10px;
+    float: right;
+}
+
+#list {
+    margin-right: 5px;
+}
+
+.header1 {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    cursor: text;
+}
+
+#q {
+    float: right;
+    width: 250px;
+}
+
+.squares {
+    width: 23px;
+    height: 23px;
+}
+.list {
+    height: 23px;
+}
+
+
+.empty {
+    margin-top: 100px;
+    color: #8b8b8b;
+}
+#flex {
+    margin-top: 50px;
+}
+
+#flex ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#flex ul li {
+    margin-top: 20px;
+    list-style: none;
+    flex: 0 0 33.3333333%;
+}
+
+.card-title {
+    font-weight: bold;
+}
+.card-text {
+    font-weight: lighter;
+}
+.btn-group {
+    float: right;
+} */
+
+.container {
+    width: 75%;
+    min-width: 900px;
+    margin: 0 auto;
+    padding-top: 78px;
+    padding-bottom: 238px;
+}
+
+#create_case_button {
+    background: #0050CF;
+}
+
+#q {
+    float: right;
+    width: 250px;
+}
+
+#submit-filters {
+    margin-top: 100px;
+}
+
+.field-label {
+    margin-top: 30px;
+}
+
+.empty {
+    margin-top: 100px;
+    color: #8b8b8b;
+}
+#flex {
+    margin-top: 50px;
+}
+
+/* #flex ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#flex ul li {
+    margin-top: 20px;
+    list-style: none;
+    flex: 0 0 33.3333333%;
+} */
+
+.card-title {
+    font-weight: bold;
+}
+.card-text {
+    font-weight: lighter;
+}
+.btn-group {
+    float: right;
+}
+.btn-outline-primary {
+    border-color: #000;
+}
+
+.btn-primary {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #0050CF;
+}
+
+.squares {
+    width: 23px;
+    height: 23px;
+}
+.list {
+    height: 23px;
+}
+
+.btn-light:hover {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #f8f9fa;
+    --bs-btn-hover-border-color: #f8f9fa;
+    --bs-btn-focus-shadow-rgb: 211,212,213;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #f8f9fa;
+    --bs-btn-active-border-color: #f8f9fa;
+    --bs-btn-active-shadow: none;
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #f8f9fa;
+    --bs-btn-disabled-border-color: #f8f9fa;
+    cursor: text;
 }

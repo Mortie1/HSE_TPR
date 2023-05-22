@@ -5,13 +5,28 @@
 <link rel="stylesheet" href="{% static 'repository/css/profile.css' %}">
 {% endblock styles%}
 
+
 {% block title %}
 Профиль
 {% endblock title %}
 
 {% block content %}
     <div class="container">
-        Здесь будет профиль
-        <button onclick="location.href={% url 'logout' %}">Выйти</button>
+        
+        <a class="btn btn-light">Мои кейсы:</a>
+        
+        
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" id='tiles'><img id='tiles' src={% static 'imgs/4sq.png' %} class='squares'></button>
+            <button type="button" class="btn btn-outline-primary" id='list'><img id='list' src={% static 'imgs/list.png' %} class='list'></button>
+        </div>
+        <input class="form-control me-2" type="search" placeholder="Поиск по названию" aria-label="Search" name="q" id="q" autocomplete = "off">
+        <div id="flex"></div>
     </div>
 {% endblock content %}
+
+{% block scripts%}
+<script>document.getElementById("header_profile_link").classList.add("active");</script>
+<script src={% static 'repository/js/profile.js'%}></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock scripts%}

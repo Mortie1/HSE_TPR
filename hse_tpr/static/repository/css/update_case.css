@@ -1,0 +1,16 @@
+.container {
+    width: 86%;
+    min-width: 900px;
+    margin: 0 auto;
+    padding-top: 78px;
+    padding-bottom: 238px;
+}
+
+.field-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.input-box {
+    margin-top: 20px;
+}

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./hse_tpr
+    command: python manage.py runserver 0:8000
+    volumes:
+      - ./hse_tpr/:/usr/src/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    links:
+      - db
+    network_mode: bridge
+    # networks:
+    #   - bridge
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=hse_tpr_dev2
+      - POSTGRES_USER=hse_tpr2
+      - POSTGRES_PASSWORD=hse_tpr2
+    ports:
+      - 5434:5432/tcp
+    network_mode: bridge
+    # networks:
+    #   - bridge
+      
+# networks:
+#   HSE_TPR:
+#     name: HSE_TPR
+#     external: true
+#     driver: bridge
+
+volumes:
+  postgres_data:

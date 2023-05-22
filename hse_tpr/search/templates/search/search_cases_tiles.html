@@ -1,0 +1,21 @@
+{% load search_templatetags %}
+<ul>
+{% for case in cases %}
+    <li>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ case.case_title }}</h5>
+                <p class="card-text">{% cut_description case.case_annotation %}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% comment %} <li class="list-group-item">{{ case.author }}</li> {% endcomment %}
+            </ul>
+            <div class="card-body">
+                <a href="{{ case.pk }}/" class="card-link" data-case-pk={{ case.pk }}>Подробнее</a>
+            </div>
+        </div>
+    </li>
+{% empty %}
+    <div class="empty">Не найдено ни одного кейса :(</div>
+{% endfor %}
+</ul>

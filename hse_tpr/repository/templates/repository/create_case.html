@@ -1,0 +1,45 @@
+{% extends 'user_base.html' %}
+{% load static %}
+{% load repository_templatetags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/create_case.css' %}"/>
+{% endblock styles%}
+
+{% block title %}
+Создать кейс
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <form class="form_box" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <p class="field-label">{{ field.label }}</p>
+                {{ field }}
+                <script type="text/javascript">
+                    document.getElementById("{{ field.auto_id }}").classList.remove('is-invalid');
+                </script>
+                {% if field.errors %}
+                    <script type="text/javascript">
+                        document.getElementById("{{ field.auto_id }}").classList.add('is-invalid');
+                    </script>
+                {% endif %}
+                {% if field|is_multiple_choice %}
+                    <p class="hint">Для выбора нескольких вариантов, нажмите по ним с зажатой клавишей ctrl. Для удаления выбранного варианта, нажмите по нему с зажатой клавишей ctrl.</p>
+                {% endif %}
+            {% endfor %}
+            <div class = "input-box">
+                <button class="btn btn-primary" id="submit_btn">Создать</button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock content %}
+
+{% block scripts%}
+<script src={% static 'repository/js/create_case.js'%}>
+    
+</script>
+{% endblock scripts%}

@@ -1,0 +1,25 @@
+.container {
+    width: 86%;
+    min-width: 900px;
+    margin: 0 auto;
+    padding-top: 78px;
+    padding-bottom: 238px;
+}
+
+.row {
+    margin-top: 30px;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.input-group {
+    margin-top: 30px;
+    width: 50%;
+}
+
+.password_errors {
+    color:rgb(156, 0, 0);
+    font-size: 12px;
+}

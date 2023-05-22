@@ -1,0 +1,57 @@
+{% extends 'user_base.html' %}
+{% load static %}
+{% load repository_templatetags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'repository/css/repository.css' %}">
+{% endblock styles%}
+
+
+{% block title %}
+Репозиторий
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            Фильтры
+        </a>
+        
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Фильтры</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p class='field-label'>Платформа/сервис/ ПО – наименование программного обеспечения, используемого для работы кейса</p>
+                <select name="Platform" class="form-select" label="Выберите платформу" id="Platform">
+                    {% get_options models_for_filters|at:'Platform' is_single=True as options %}
+                    
+                    {% for option in options %}
+                        <option value={{ option|index:0 }}>{{ option|index:1 }}</option>
+                    {% endfor %}
+                </select>
+                
+                <p class='field-label'>ФИО автора информации о кейсе</p>
+                <input type='text' class="form-control" id="information_author_name" placeholder="ФИО"></input>
+
+                <button type='button' id='submit-filters'  data-bs-dismiss="offcanvas" class="btn btn-primary">Применить</button>
+            </div>
+        </div> 
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" id='tiles'><img id='tiles' src={% static 'imgs/4sq.png' %} class='squares'></button>
+            <button type="button" class="btn btn-outline-primary" id='list'><img id='list' src={% static 'imgs/list.png' %} class='list'></button>
+        </div>
+        <input class="form-control me-2" type="search" placeholder="Поиск по названию" aria-label="Search" name="q" id="q" autocomplete = "off">
+        <div id="flex"></div>
+    </div>
+{% endblock content %}
+
+{% block scripts%}
+<script>
+    document.getElementById("header_repo_link").classList.add("active");
+    {% comment %} document.getElementById("header_repo_link").style.background_color = "#1B3B72"; {% endcomment %}
+</script>
+<script src="{% static 'repository/js/repository.js' %}"> </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock scripts%}

@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('registration.urls')),
     path('', include('repository.urls')),
+    path('', include('search.urls')),
+    
 ]
 
 # handler404 = 'index.views.handler404view'

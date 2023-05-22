@@ -1,0 +1,30 @@
+.container {
+    width: 75%;
+    min-width: 900px;
+    margin: 0 auto;
+    padding-top: 78px;
+    padding-bottom: 238px;
+}
+
+.form_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.input-box {
+    margin-top: 20px;
+}
+/* .form-control {
+    margin-top: 5px;
+}
+.form-select {
+    margin-top: 5px;
+} */
+.hint {
+    font-size: 15px;
+    color: #808080;
+}
