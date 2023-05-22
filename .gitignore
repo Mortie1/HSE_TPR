@@ -136,3 +136,5 @@ migrations/
 # secret keys
 .env.*
 
+# portainer
+portainer/
