@@ -12,9 +12,10 @@
 
 {% block content %}
     <div class="container">
-        <div class="header">Мои кейсы:</div>
         
-        <div></div>
+        <a class="btn btn-light">Мои кейсы:</a>
+        
+        
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <button type="button" class="btn btn-outline-primary" id='tiles'><img id='tiles' src={% static 'imgs/4sq.png' %} class='squares'></button>
             <button type="button" class="btn btn-outline-primary" id='list'><img id='list' src={% static 'imgs/list.png' %} class='list'></button>
@@ -27,4 +28,5 @@
 {% block scripts%}
 <script>document.getElementById("header_profile_link").classList.add("active");</script>
 <script src={% static 'repository/js/profile.js'%}></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock scripts%}

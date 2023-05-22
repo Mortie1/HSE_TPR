@@ -68,6 +68,7 @@ class EducationalCaseForm(forms.ModelForm):
             'case_title': forms.TextInput(attrs={
                 'class': "form-control",
                 "placeholder": "Введите название кейса",
+                "autocomplete": "off",
             }),
             'information_author_email': forms.EmailInput(attrs={
                 'class': "form-control",

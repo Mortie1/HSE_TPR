@@ -80,7 +80,11 @@ class CaseView(LoginRequiredMixin, FormView):
                 initial[field.name] = getattr(case, field.name).all()
             else:
                 initial[field.name] = getattr(case, field.name)
+        print(initial)
         return initial
+
+        
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -128,12 +132,24 @@ class CaseUpdateView(LoginRequiredMixin, UpdateView):
             else:
                 initial[field.name] = getattr(case, field.name)
         return initial
-
-    def form_valid(self, form) -> HttpResponse:
+    
+    
+    def form_valid(self, form: EducationalCaseForm) -> HttpResponse:
         user = self.request.user
         case = EducationalCase()
         case = form.save(commit=False)
         case.owner_id = user.pk
+        many_to_many_fields = {
+            'case_types',
+            'educational_levels',
+            'state_specs',
+            'other_specs',
+        }
+        case.save()
+        for field in many_to_many_fields:
+            temp = form.cleaned_data.get(field)
+            for item in temp:
+                getattr(case, field).add(item)
         case.save()
         return HttpResponseRedirect(reverse_lazy('profile'))
 

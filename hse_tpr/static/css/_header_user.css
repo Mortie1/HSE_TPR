@@ -87,6 +87,7 @@ body {
 
 .select-menu {
     max-width: 330px;
+    
 }
 .select-menu .select-btn {
     display: flex;
@@ -100,6 +101,7 @@ body {
 }
 .select-menu .options {
     position: absolute;
+    transition: 0.3s ease-out;
     width: 200px;
     overflow-y: auto;
     max-height: 295px;
@@ -108,12 +110,14 @@ body {
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation-name: fadeInDown;
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    /* animation-name: fadeInDown;
     -webkit-animation-name: fadeInDown;
     animation-duration: 0.35s;
     animation-fill-mode: both;
     -webkit-animation-duration: 0.35s;
-    -webkit-animation-fill-mode: both;
+    -webkit-animation-fill-mode: both; */
 }
 .select-menu .options .option {
     margin: 0 auto;
@@ -143,14 +147,15 @@ body {
 }
 .select-menu.active .options {
     display: block;
-    opacity: 0;
     z-index: 10;
-    animation-name: fadeInUp;
+    /* animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
     animation-duration: 0.4s;
     animation-fill-mode: both;
     -webkit-animation-duration: 0.4s;
-    -webkit-animation-fill-mode: both;
+    -webkit-animation-fill-mode: both; */
+    transform: translate3d(0, 10px, 0);
+    opacity: 1;
 }
 
 @keyframes fadeInUp {
@@ -165,7 +170,6 @@ to {
 @keyframes fadeInDown {
 from {
     transform: translate3d(0, 0, 0);
-    opacity: 1;
 }
 to {
     transform: translate3d(0, 20px, 0);

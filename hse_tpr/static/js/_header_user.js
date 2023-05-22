@@ -3,6 +3,8 @@ const optionMenu = document.querySelector(".select-menu"),
     options = optionMenu.querySelectorAll(".option"),
     sBtn_text = optionMenu.querySelector(".sBtn-text");
 
+    
+
 selectBtn.addEventListener("click", () =>
     optionMenu.classList.toggle("active")
 );
@@ -15,3 +17,13 @@ options.forEach((option) => {
         optionMenu.classList.remove("active");
     });
 });
+
+
+// setTimeout(() => {
+//     document.querySelector(".options").style.cssText = "animation-name: fadeInDown;\
+// -webkit-animation-name: fadeInDown;\
+// animation-duration: 0.35s;\
+// animation-fill-mode: both;\
+// -webkit-animation-duration: 0.35s;\
+// -webkit-animation-fill-mode: both;";
+// }, 1000);
