@@ -2,14 +2,20 @@ version: '3.8'
 
 services:
   web:
-    build: ./hse_tpr
+    build: 
+      context: ./hse_tpr
+      dockerfile: Dockerfile.prod
     command: gunicorn hse_tpr.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - 8000:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    expose:
+      - 8000
     env_file:
       - ./.env.prod
     links:
       - db
+    # networks:
+    #   - hse_tpr_net
     network_mode: bridge
   db:
     image: postgres:13.0-alpine
@@ -20,6 +26,27 @@ services:
     network_mode: bridge
     ports:
       - 5434:5432/tcp
+    # networks:
+    #   - hse_tpr_net
+
+  nginx:
+    build: ./nginx
+    network_mode: bridge
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    ports:
+      - 7777:7777
+    links:
+      - web
+    # networks:
+    #   - hse_tpr_net
+
+
+# networks:
+#   hse_tpr_net:
+#     # Use a custom driver which takes special options
+#     external: true
 
 volumes:
   postgres_data:
+  static_volume:
