@@ -6,6 +6,13 @@
     padding-bottom: 238px;
 }
 
+.field-box {
+    display: flex;
+}
+.btn-primary {
+    margin-left: 15px;
+}
+
 .form_box {
     display: flex;
     flex-direction: column;
