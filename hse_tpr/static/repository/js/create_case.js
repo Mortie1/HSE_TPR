@@ -14,7 +14,7 @@ function getCookie(name) {
 
 const csrftoken = getCookie('csrftoken');
 
-const exampleModal = document.getElementById('modal')
+const exampleModal = document.getElementById('modal-add-my-variant')
 
 if (exampleModal) {
     exampleModal.addEventListener('show.bs.modal', event => {
@@ -51,6 +51,7 @@ if (exampleModal) {
                     opt.value = id;
                     opt.innerHTML = modalBodyInput.value;
                     document.getElementById(field).appendChild(opt);
+                    console.log(document.getElementById(field))
                     if (field === 'id_case_department') {
                         var opt1 = document.createElement('option');
                         opt1.value = id;

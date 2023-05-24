@@ -29,14 +29,14 @@
                         </script>
                     {% endif %}
                     {% if field|is_choice %}
-                        <button type="button" class="btn btn-primary" id="add_choice_{{field.auto_id}}" data-bs-toggle="modal" data-bs-target="#modal" data-bs-field-id="{{field.auto_id}}">Свой вариант</button>
+                        <button type="button" class="btn btn-primary" id="add_choice_{{field.auto_id}}" data-bs-toggle="modal" data-bs-target="#modal-add-my-variant" data-bs-field-id="{{field.auto_id}}">Свой вариант</button>
                     {% endif %}
                 </div>
                 {% if field|is_multiple_choice %}
                     <p class="hint">Для выбора нескольких вариантов, нажмите по ним с зажатой клавишей ctrl. Для удаления выбранного варианта, нажмите по нему с зажатой клавишей ctrl.</p>
                 {% endif %}
             {% endfor %}
-            <div class="modal fade" id="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="modal-add-my-variant" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">

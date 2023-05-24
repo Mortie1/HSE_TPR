@@ -39,7 +39,7 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body">
-                                    <select name="case_department" class="form-select" aria-label="Выберите департамент" id="id_case_department">
+                                    <select name="select_new_case_type" class="form-select" aria-label="Выберите департамент">
                                       {% get_types_options as types %}
                                       {% for type in types %}
                                         <option value={{type|index:0}}>{{type|index:1}}</option>
@@ -48,7 +48,7 @@
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                                      <button type="button" class="btn btn-primary" id="submit-my-variant" onclick="window.location.href='{% url 'create_case' %}'">Добавить</button>
+                                      <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_case' %}'">Добавить</button>
                                   </div>
                               </div>
                           </div>
