@@ -15,7 +15,7 @@ import json
 
 from django.views.generic import TemplateView, CreateView, UpdateView
 from .forms import EducationalCaseForm
-from .models import EducationalCase, CaseType, Platform
+from .models import EducationalCase, CaseType, Platform, Department, StateSpec, OtherSpec, CaseType, EducationalLevel
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
@@ -202,4 +202,35 @@ class SettingsSavePassword(LoginRequiredMixin, View):
                 html += f"<li>{message}</li>"
             html += '</ul>'
             response = {"OK": 0, "html": html}
+        return JsonResponse(response)
+
+
+class AddNewVariantToSelectField(LoginRequiredMixin, View):
+    login_url = '/login/'
+    
+    def post(self, request, *args, **kwargs):
+        coming_data = json.loads(request.body)
+        response = {}
+        
+        model_to_update = None
+        field_name = coming_data['field']
+        
+        if field_name == 'case_department' or field_name == 'information_author_department':
+            model_to_update = Department
+        elif field_name == 'case_platform':
+            model_to_update = Platform
+        elif field_name == 'state_specs':
+            model_to_update = StateSpec
+        elif field_name == 'other_specs':
+            model_to_update = OtherSpec
+        elif field_name == 'case_types':
+            model_to_update = CaseType
+        elif field_name == 'educational_levels':
+            model_to_update = EducationalLevel
+        
+        if model_to_update is None or model_to_update.objects.filter(title=coming_data['input']):
+            raise Http404
+        
+        instance = model_to_update.objects.create(title=coming_data['input'])
+        response = {"id": instance.pk}
         return JsonResponse(response)

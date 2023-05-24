@@ -1,0 +1,11 @@
+{
+    "platforms": [
+        "Kahoot",
+        "Socrative",
+        "Mentimeter",
+        "Surveymonkey",
+        "Zoom",
+        "Miro",
+        "Znanium"
+    ]
+}

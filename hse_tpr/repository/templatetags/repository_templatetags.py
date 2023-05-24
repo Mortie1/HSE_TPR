@@ -17,6 +17,24 @@ def is_multiple_choice(field):
         return True
     return False
 
+
+@register.filter
+def is_choice(field):
+    select_fields = {
+        'case_department',
+        'case_platform',
+        'information_author_department',
+        'state_specs',
+        'other_specs',
+        "case_types",
+        "educational_levels"
+    }
+    if field.name in select_fields:
+        return True
+    return False
+
+
+
 @register.filter
 def at(d: dict, val: str):
     return d[val]
@@ -67,3 +85,6 @@ def get_options(model, is_single=False):
     print(x)
     return x
 
+@register.simple_tag
+def get_types_options():
+    return get_options(CaseType)

@@ -134,7 +134,7 @@ dmypy.json
 migrations/
 
 # secret keys
-.env.*
+.env*
 
 # portainer
 portainer/

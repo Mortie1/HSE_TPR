@@ -1,4 +1,5 @@
 {% load static %}
+{% load repository_templatetags %}
 <header>
     <div class="header-navigation">
         <a href="{% url 'repository' %}"><img src="{% static 'imgs/logo.png' %}" class="header-logo"></a>
@@ -19,7 +20,7 @@
                         <ul class="options">
                           <li class="option">
                             <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
-                            <a href={% url 'create_case' %} class="option-text">Создать кейс</a>
+                            <button href={% url 'create_case' %} data-bs-toggle="modal" data-bs-target="#modal" class="option-text">Создать кейс</button>
                           </li>
                           <li class="option">
                             <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
@@ -30,6 +31,28 @@
                             <a href={% url 'logout' %} class="option-text">Выйти</a>
                           </li>
                         </ul>
+                        <div class="modal fade" id="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Выберите тип кейса</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <select name="select_new_case_type" class="form-select" aria-label="Выберите департамент">
+                                      {% get_types_options as types %}
+                                      {% for type in types %}
+                                        <option value={{type|index:0}}>{{type|index:1}}</option>
+                                      {% endfor %}
+                                    </select>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                      <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_case' %}'">Добавить</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                       </div>
                 </li>
             </ul>

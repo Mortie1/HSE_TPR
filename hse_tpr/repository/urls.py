@@ -11,4 +11,5 @@ urlpatterns = [
     path('repository/case_update/<int:pk>/', CaseUpdateView.as_view(), name='case_update'),
     path('profile/settings/save_password/', SettingsSavePassword.as_view(), name='save_password'),
     path('profile/settings/save_name/', SettingsSaveName.as_view(), name='save_name'),
+    path('add_my_variant/', AddNewVariantToSelectField.as_view(), name="add_my_variant"),
 ]
