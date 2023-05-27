@@ -39,6 +39,12 @@ class CreateCaseView(LoginRequiredMixin, FormView):
     login_url = '/login/'
     form_class = EducationalCaseForm
     template_name = 'repository/create_case.html'
+    
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['information_author_email'] = self.request.user.email
+        initial['information_author_name'] = f'{self.request.user.last_name} {self.request.user.first_name}'
+        return initial
 
     def form_valid(self, form: EducationalCaseForm) -> HttpResponse:
         user = self.request.user
@@ -80,7 +86,6 @@ class CaseView(LoginRequiredMixin, FormView):
                 initial[field.name] = getattr(case, field.name).all()
             else:
                 initial[field.name] = getattr(case, field.name)
-        print(initial)
         return initial
 
         

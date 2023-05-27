@@ -63,12 +63,11 @@ def edit_if_select(field, case):
         field.choices = choices
         return field
     for value in getattr(case, field.name).all():
-        print('xxx')
         choices.append((None, value.title))
     # except:
     #     choices = [(None, getattr(case, field.name))]
     field.choices = choices
-    print(field.choices)
+
     return field
 
 @register.simple_tag
@@ -82,7 +81,6 @@ def get_options(model, is_single=False):
     if is_single:
         x = [(None, "Не выбрано")]
     x.extend(res)
-    print(x)
     return x
 
 @register.simple_tag
