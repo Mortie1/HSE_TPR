@@ -25,7 +25,7 @@ class SearchCasesAjax(LoginRequiredMixin, View):
                 continue
             if request_vars[key] != "None":
                 if key == 'Platform':
-                    cases = cases.filter(case_platform__in=list(map(int, request_vars[key]))).distinct()
+                    cases = cases.filter(case_platform_id=int(request_vars[key])).distinct()
                 elif key == 'information_author_name':
                     cases = cases.filter(information_author_name__icontains=request_vars[key]).distinct()
                 elif key == 'profile' and request_vars[key] == '1':
